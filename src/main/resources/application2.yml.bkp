@@ -1,0 +1,26 @@
+server:
+  port: '8080'
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          azure:
+            #scope: openid
+            scope: ce3f6dbf-37ce-4249-8de4-878a358fb7d9/.default
+            #scope: openid, https://graph.microsoft.com/user.read, profile            redirect-uri: http://localhost:8080/login/oauth2/code/azure
+            client-id: ce3f6dbf-37ce-4249-8de4-878a358fb7d9
+           #redirect-uri: http://localhost:8055/login
+           #redirect-uri: http://na330234-sal.delhaize.com:8080
+            client-secret: 2Z4a9l.uWMh4VzI0mCJ7.IJT~-atfeIk3E
+azure:
+  activedirectory:
+    tenant-id: 383a21fa-5bd0-4c86-9d38-b3f502c87e15
+    user-group:
+      allowed-groups: group1, group2
+      
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
+    
+  

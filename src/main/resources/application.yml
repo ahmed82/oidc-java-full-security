@@ -1,0 +1,28 @@
+server:
+  port: '8080'
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          azure:
+            scope: openid
+            #scope: ${SCOP}
+            #scope: openid, https://graph.microsoft.com/user.read, profile            redirect-uri: ${RED_URL}
+            client-id: ${CLIENT_ID}
+           #redirect-uri: http://localhost:8055/login
+           #redirect-uri: http://na330234-sal.delhaize.com:8080
+            client-secret: ${CLIENT_SECRET}
+        
+             
+azure:
+  activedirectory:
+    tenant-id: ${TENANT_ID}
+    user-group:
+      allowed-groups: group1, group2
+      
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
+    
+  
