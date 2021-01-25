@@ -11,7 +11,7 @@ public class HomeController {
 	@GetMapping("/hi")
 	public String home() {
 		
-		return "";
+		return "test";
 	}
 	
 	@GetMapping("/oidc-principal")
