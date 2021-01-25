@@ -6,20 +6,35 @@ spring:
       client:
         registration:
           azure:
-            scope: openid
-            #scope: ${SCOP}
-            #scope: openid, https://graph.microsoft.com/user.read, profile            redirect-uri: ${RED_URL}
             client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
+            client-authentication-method: basic
+            authorization-grant-type: authorization_code
+            redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid, https://graph.microsoft.com/user.read, profile
+            client-name: Azure
+        provider:
+          azure:
+            authorization-uri: https://login.microsoftonline.com/${TENANT_ID}/oauth2/authorize
+            token-uri: https://login.microsoftonline.com/${TENANT_ID}/oauth2/token
+            user-info-uri: https://login.microsoftonline.com/${TENANT_ID}/openid/userinfo
+            user-name-attribute: sub
+            jwk-set-uri: https://login.microsoftonline.com/${TENANT_ID}/discovery/keys
+          #azure:
+           # scope: openid
+            #scope: ${SCOP}
+            #scope: openid, https://graph.microsoft.com/user.read, profile
+           # redirect-uri: ${RED_URL}
            #redirect-uri: http://localhost:8055/login
            #redirect-uri: http://na330234-sal.delhaize.com:8080
-            client-secret: ${CLIENT_SECRET}
+            #client-secret: ${CLIENT_SECRET}
         
              
 azure:
   activedirectory:
     tenant-id: ${TENANT_ID}
     user-group:
-      allowed-groups: group1, group2
+      #allowed-groups: group1, group2
       
 logging:
   level:
